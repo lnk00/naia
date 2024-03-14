@@ -3,12 +3,17 @@ import { StyleSheet, View, Text } from "react-native";
 import { NaiaButton } from "../../NaiaButton";
 import { NaiaInput } from "../../NaiaInput";
 
-export const AddLastNameView = ({ key, onPress }) => {
+export const AddLastNameView = ({ key, onPress, lastName, setLastName }) => {
   return (
     <View style={styles.container} key={key}>
       <Text style={styles.title}>Le</Text>
       <Text style={styles.title}>Nom</Text>
-      <NaiaInput style={styles.input} placeholder="Doe" />
+      <NaiaInput
+        style={styles.input}
+        placeholder="Doe"
+        value={lastName}
+        updateValue={setLastName}
+      />
       <NaiaButton style={styles.button} onPress={onPress} label="Suivant" />
     </View>
   );

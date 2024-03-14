@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { NaiaButton } from "../../NaiaButton";
 import DateTimePicker from "@react-native-community/datetimepicker";
 
-export const AddBirthdayDateView = ({ key, onPress }) => {
-  const [date, setDate] = useState(new Date(1598051730000));
+export const AddBirthdayDateView = ({ key, onPress, date, setDate }) => {
   return (
     <View style={styles.container} key={key}>
       <Text style={styles.title}>Date de</Text>
@@ -13,7 +12,7 @@ export const AddBirthdayDateView = ({ key, onPress }) => {
         style={styles.picker}
         value={date}
         mode={"date"}
-        onChange={() => {}}
+        onChange={(_, value) => setDate(value)}
         display="spinner"
       />
       <NaiaButton style={styles.button} onPress={onPress} label="Ajouter" />

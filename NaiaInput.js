@@ -2,11 +2,13 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { BottomSheetTextInput } from "@gorhom/bottom-sheet";
 
-export const NaiaInput = ({ style, placeholder }) => {
+export const NaiaInput = ({ style, placeholder, value, updateValue }) => {
   return (
     <BottomSheetTextInput
       style={[styles.input, style]}
       placeholder={placeholder}
+      value={value}
+      onChangeText={updateValue}
     />
   );
 };

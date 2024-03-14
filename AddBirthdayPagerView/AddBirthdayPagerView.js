@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { StyleSheet } from "react-native";
 import PagerView from "react-native-pager-view";
 import { AddFirstNameView } from "./Views/AddFirstNameView";
@@ -7,6 +7,14 @@ import { AddBirthdayDateView } from "./Views/AddBirthdayDateView";
 
 export const AddBirthdayPagerView = ({ bottomSheetRef }) => {
   const pageViewerRef = useRef(null);
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [date, setDate] = useState(new Date(1598051730000));
+
+  const handleSubmit = () => {
+    bottomSheetRef.current.collapse();
+  };
 
   return (
     <PagerView
@@ -18,14 +26,20 @@ export const AddBirthdayPagerView = ({ bottomSheetRef }) => {
       <AddFirstNameView
         key={1}
         onPress={() => pageViewerRef.current.setPage(1)}
+        firstName={firstName}
+        setFirstName={setFirstName}
       />
       <AddLastNameView
         key={2}
         onPress={() => pageViewerRef.current.setPage(2)}
+        lastName={lastName}
+        setLastName={setLastName}
       />
       <AddBirthdayDateView
         key={3}
-        onPress={() => bottomSheetRef.current.collapse()}
+        onPress={handleSubmit}
+        date={date}
+        setDate={setDate}
       />
     </PagerView>
   );
