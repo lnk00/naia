@@ -1,16 +1,30 @@
 import React from "react";
-import { StatusBar, View } from "react-native";
+import { StatusBar, Text, SafeAreaView } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NaiaBottomSheet } from "./NaiaBottomSheet/NaiaBottomSheet";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const App = () => {
   return (
-    <SafeAreaProvider>
-      <StatusBar backgroundColor="#fff" barStyle="dark-content" />
-      <View style={{ flex: 1 }}>
-        <NaiaBottomSheet />
-      </View>
-    </SafeAreaProvider>
+    <BottomSheetModalProvider>
+      <SafeAreaProvider>
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <StatusBar backgroundColor="#fff" barStyle="dark-content" />
+          <SafeAreaView
+            style={{
+              flex: 1,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Text>Test</Text>
+          </SafeAreaView>
+          <NaiaBottomSheet />
+        </GestureHandlerRootView>
+      </SafeAreaProvider>
+    </BottomSheetModalProvider>
   );
 };
 

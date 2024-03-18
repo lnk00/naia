@@ -1,7 +1,9 @@
 import React, { useCallback, useRef, useState } from "react";
-import { StyleSheet } from "react-native";
-import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { StyleSheet, Text } from "react-native";
+import BottomSheetModal, {
+  BottomSheetScrollView,
+  BottomSheetBackdrop,
+} from "@gorhom/bottom-sheet";
 import Animated, {
   useSharedValue,
   FadeIn,
@@ -9,7 +11,6 @@ import Animated, {
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { NaiaButton } from "./../NaiaButton";
-import { NaiaBottomSheetBackdrop } from "./NaiaBottomSheetBackdrop";
 import { AddBirthdayPagerView } from "../AddBirthdayPagerView/AddBirthdayPagerView";
 
 export const NaiaBottomSheet = () => {
@@ -27,50 +28,48 @@ export const NaiaBottomSheet = () => {
     bottomSheetRef.current.expand();
   };
 
+  const renderBackdrop = useCallback(
+    (props) => <BottomSheetBackdrop {...props} />,
+    [],
+  );
+
   return (
-    <GestureHandlerRootView style={styles.container}>
-      <BottomSheet
-        ref={bottomSheetRef}
-        onAnimate={handleSheetChanges}
-        keyboardBehavior="interactive"
-        animatedPosition={bottomSheetPosition}
-        topInset={insets.top}
-        snapPoints={[125, "100%"]}
-        backdropComponent={() => (
-          <NaiaBottomSheetBackdrop animatedIndex={bottomSheetPosition} />
-        )}
+    <BottomSheetModal
+      ref={bottomSheetRef}
+      onAnimate={handleSheetChanges}
+      keyboardBehavior="interactive"
+      animatedPosition={bottomSheetPosition}
+      topInset={insets.top}
+      snapPoints={[125, "100%"]}
+      backdropComponent={renderBackdrop}
+    >
+      <BottomSheetScrollView
+        style={styles.contentContainer}
+        keyboardShouldPersistTaps="handled"
       >
-        <BottomSheetScrollView
-          style={styles.contentContainer}
-          keyboardShouldPersistTaps="handled"
-        >
-          {!isSheetOpen && (
-            <Animated.View entering={FadeIn} exiting={FadeOut}>
-              <NaiaButton
-                onPress={handleOpenPress}
-                style={{
-                  marginBottom: insets.bottom != 0 ? insets.bottom : 16,
-                  marginTop: 8,
-                }}
-                label={"Ajouter"}
-              />
-            </Animated.View>
-          )}
-          {isSheetOpen && (
-            <Animated.View entering={FadeIn} exiting={FadeOut}>
-              <AddBirthdayPagerView bottomSheetRef={bottomSheetRef} />
-            </Animated.View>
-          )}
-        </BottomSheetScrollView>
-      </BottomSheet>
-    </GestureHandlerRootView>
+        {!isSheetOpen && (
+          <Animated.View entering={FadeIn} exiting={FadeOut}>
+            <NaiaButton
+              onPress={handleOpenPress}
+              style={{
+                marginBottom: insets.bottom != 0 ? insets.bottom : 16,
+                marginTop: 8,
+              }}
+              label={"Ajouter"}
+            />
+          </Animated.View>
+        )}
+        {isSheetOpen && (
+          <Animated.View entering={FadeIn} exiting={FadeOut}>
+            <AddBirthdayPagerView bottomSheetRef={bottomSheetRef} />
+          </Animated.View>
+        )}
+      </BottomSheetScrollView>
+    </BottomSheetModal>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   contentContainer: {
     flex: 1,
     paddingHorizontal: 24,
