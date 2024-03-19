@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StatusBar, Text, SafeAreaView } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NaiaBottomSheet } from "./NaiaBottomSheet/NaiaBottomSheet";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { createBirthdayTable, getBirthdays } from "./db";
+
+createBirthdayTable();
 
 const App = () => {
+  const [bdays, setBdays] = useState([]);
+
+  useEffect(() => {
+    const fetchBdays = async () => setBdays(await getBirthdays());
+    fetchBdays();
+  }, []);
+
   return (
     <BottomSheetModalProvider>
       <SafeAreaProvider>
@@ -19,7 +29,9 @@ const App = () => {
               justifyContent: "center",
             }}
           >
-            <Text>Test</Text>
+            {bdays.map((bday, i) => (
+              <Text key={i}>{bday.first_name}</Text>
+            ))}
           </SafeAreaView>
           <NaiaBottomSheet />
         </GestureHandlerRootView>

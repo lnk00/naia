@@ -13,7 +13,7 @@ export const AddBirthdayPagerView = ({ bottomSheetRef }) => {
   const [lastName, setLastName] = useState("");
   const [date, setDate] = useState(new Date(1598051730000));
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     insertBirthday(firstName, lastName, date);
     bottomSheetRef.current.collapse();
   };
