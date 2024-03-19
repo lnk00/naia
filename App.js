@@ -37,12 +37,7 @@ const App = () => {
 
   useEffect(() => {
     fetchBirthdays();
-    console.log(bdays);
   }, []);
-
-  useEffect(() => {
-    console.log(JSON.stringify(bdays));
-  }, [bdays]);
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
