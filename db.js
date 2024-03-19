@@ -1,4 +1,5 @@
 import { openDatabase } from "expo-sqlite";
+import { birthdaysAtom, store } from "./state";
 
 export const db = openDatabase("naia");
 
@@ -30,14 +31,14 @@ export const dropBirthdaysTable = () => {
   );
 };
 
-export const getBirthdays = async () => {
-  return new Promise((resolve) => {
-    db.transaction((tx) =>
+export const fetchBirthdays = () => {
+  db.transaction(
+    (tx) =>
       tx.executeSql("SELECT * FROM birthdays;", [], (_, { rows }) =>
-        resolve(rows._array),
+        store.set(birthdaysAtom, () => rows._array),
       ),
-    );
-  });
+    (err) => console.log(err),
+  );
 };
 
 export const insertBirthday = (firstName, lastName, date) => {
@@ -48,5 +49,6 @@ export const insertBirthday = (firstName, lastName, date) => {
         [firstName, lastName, date.toISOString()],
       ),
     (err) => console.log(err),
+    () => fetchBirthdays(),
   );
 };
