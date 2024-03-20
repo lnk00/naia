@@ -45,7 +45,7 @@ const App = () => {
       <StatusBar backgroundColor="#fff" barStyle="dark-content" />
       <SafeAreaView style={styles.container}>
         <AppBar />
-        <View style={styles.container}>
+        <View style={styles.listContainer}>
           <SectionList
             sections={bdays}
             keyExtractor={(_, index) => index}
@@ -76,6 +76,9 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+  },
+  listContainer: {
     flex: 1,
     paddingHorizontal: 24,
   },

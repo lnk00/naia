@@ -1,7 +1,7 @@
 import { Image } from "expo-image";
 import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
-import settingsIcon from "./assets/settings.svg";
+import settingsIcon from "./assets/settings.png";
 import { LinearGradient } from "expo-linear-gradient";
 
 export const AppBar = () => {
