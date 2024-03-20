@@ -15,6 +15,7 @@ import { createBirthdayTable, fetchBirthdays } from "./db";
 import { Provider, useAtomValue } from "jotai";
 import { sortedBirthdaysAtom, store } from "./state";
 import { NaiaBdayRow } from "./NaiaBdayRow";
+import { AppBar } from "./AppBar";
 
 const Scaffold = () => {
   useEffect(() => {
@@ -43,6 +44,7 @@ const App = () => {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <StatusBar backgroundColor="#fff" barStyle="dark-content" />
       <SafeAreaView style={styles.container}>
+        <AppBar />
         <View style={styles.container}>
           <SectionList
             sections={bdays}
@@ -94,7 +96,7 @@ const styles = StyleSheet.create({
     flexShrink: 1,
   },
   headerText: {
-    fontWeight: "800",
+    fontWeight: "700",
     fontSize: 18,
     marginLeft: "auto",
   },

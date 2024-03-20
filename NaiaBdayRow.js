@@ -14,7 +14,7 @@ export const NaiaBdayRow = ({ first_name, last_name, date, style }) => {
           <Text style={styles.name}>{first_name}</Text>
           <Text style={styles.name}>{last_name}</Text>
         </View>
-        <Text style={styles.date}>{dayjs(date).format("YYYY-MM-DD")}</Text>
+        <Text style={styles.date}>{dayjs(date).format("DD MMMM YY")}</Text>
       </View>
     </View>
   );
@@ -50,7 +50,8 @@ const styles = StyleSheet.create({
     fontWeight: "700",
   },
   date: {
-    fontSize: 18,
+    fontSize: 16,
+    fontWeight: "600",
     marginTop: 4,
   },
 });
