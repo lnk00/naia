@@ -49,14 +49,11 @@ const App = () => {
           <SectionList
             sections={bdays}
             keyExtractor={(_, index) => index}
-            renderItem={({ item, index, section }) => (
+            renderItem={({ item }) => (
               <NaiaBdayRow
                 first_name={item.first_name}
                 last_name={item.last_name}
                 date={item.date}
-                style={{
-                  marginBottom: index !== section.data.length - 1 ? 24 : 0,
-                }}
               />
             )}
             renderSectionHeader={({ section: { title } }) => (
@@ -83,7 +80,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   header: {
-    height: 48,
     width: "100%",
     backgroundColor: "white",
     display: "flex",

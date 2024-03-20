@@ -6,7 +6,6 @@ import { NaiaInput } from "../../NaiaInput";
 export const AddFirstNameView = ({ key, onPress, firstName, setFirstName }) => {
   return (
     <View style={styles.container} key={key}>
-      <Text style={styles.title}>Le</Text>
       <Text style={styles.title}>Prénom</Text>
       <NaiaInput
         style={styles.input}

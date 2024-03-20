@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 16,
     alignItems: "center",
+    marginVertical: 8,
   },
   initialContainer: {
     backgroundColor: "#EFF1F6",
