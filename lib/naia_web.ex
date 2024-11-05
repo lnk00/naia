@@ -83,8 +83,10 @@ defmodule NaiaWeb do
     quote do
       # HTML escaping functionality
       import Phoenix.HTML
-      # Core UI components and translation
+
       import NaiaWeb.Gettext
+
+      import NaiaWeb.Component.Button
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
