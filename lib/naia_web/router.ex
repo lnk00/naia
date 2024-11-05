@@ -17,7 +17,7 @@ defmodule NaiaWeb.Router do
   scope "/", NaiaWeb do
     pipe_through :browser
 
-    get "/", LandingController, :index
+    get "/", Landing.Controller, :index
   end
 
   # Other scopes may use custom stacks.

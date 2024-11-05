@@ -1,4 +1,4 @@
-defmodule NaiaWeb.LandingHTML do
+defmodule NaiaWeb.Landing.HTML do
   @moduledoc """
   This module contains pages rendered by PageController.
 
@@ -6,5 +6,5 @@ defmodule NaiaWeb.LandingHTML do
   """
   use NaiaWeb, :html
 
-  embed_templates "landing_html/*"
+  embed_templates "*"
 end

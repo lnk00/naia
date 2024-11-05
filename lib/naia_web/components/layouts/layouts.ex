@@ -10,5 +10,5 @@ defmodule NaiaWeb.Layouts do
   """
   use NaiaWeb, :html
 
-  embed_templates "layouts/*"
+  embed_templates "*"
 end

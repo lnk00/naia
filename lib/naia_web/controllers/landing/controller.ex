@@ -1,4 +1,4 @@
-defmodule NaiaWeb.LandingController do
+defmodule NaiaWeb.Landing.Controller do
   use NaiaWeb, :controller
 
   def index(conn, _params) do
