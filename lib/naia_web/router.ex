@@ -14,10 +14,27 @@ defmodule NaiaWeb.Router do
     plug :accepts, ["json"]
   end
 
+  defp basic_authentication(conn, _opts) do
+    env = Dotenv.load()
+    username = env.values["BASIC_USERNAME"]
+    password = env.values["BASIC_PASSWORD"]
+    Plug.BasicAuth.basic_auth(conn, username: username, password: password)
+  end
+
+  pipeline :admin do
+    plug :basic_authentication
+  end
+
   scope "/", NaiaWeb do
     pipe_through :browser
 
     get "/", Landing.Controller, :index
+  end
+
+  scope "/admin", NaiaWeb do
+    pipe_through [:browser, :admin]
+
+    get "/", Admin.Controller, :index
   end
 
   # Other scopes may use custom stacks.
