@@ -1,4 +1,5 @@
 defmodule NaiaWeb.Router do
+  import NaiaWeb.Plugs
   use NaiaWeb, :router
 
   pipeline :browser do
@@ -12,13 +13,6 @@ defmodule NaiaWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
-  end
-
-  defp basic_authentication(conn, _opts) do
-    env = Dotenv.load()
-    username = env.values["BASIC_USERNAME"]
-    password = env.values["BASIC_PASSWORD"]
-    Plug.BasicAuth.basic_auth(conn, username: username, password: password)
   end
 
   pipeline :admin do
