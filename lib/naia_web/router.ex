@@ -22,13 +22,13 @@ defmodule NaiaWeb.Router do
   scope "/", NaiaWeb do
     pipe_through :browser
 
-    get "/", Landing.Controller, :index
+    live "/", Landing.Index
   end
 
   scope "/admin", NaiaWeb do
     pipe_through [:browser, :admin]
 
-    get "/", Admin.Controller, :index
+    live "/", Admin.Index
   end
 
   # Other scopes may use custom stacks.
