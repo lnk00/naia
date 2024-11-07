@@ -23,6 +23,7 @@ defmodule NaiaWeb.Router do
     pipe_through :browser
 
     live "/", Landing.Index
+    live "/blog", Blog.Index
   end
 
   scope "/admin", NaiaWeb do

@@ -1,8 +1,8 @@
-defmodule Naia.Post do
+defmodule Naia.Blog.Post do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "posts" do
+  schema "blog_posts" do
     field :author, :string
     field :content, :string
     field :title, :string
