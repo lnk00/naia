@@ -30,6 +30,7 @@ defmodule NaiaWeb.Router do
     pipe_through [:browser, :admin]
 
     live "/", Admin.Index
+    live "/upload", Admin.Upload
   end
 
   # Other scopes may use custom stacks.

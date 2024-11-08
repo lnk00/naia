@@ -1,11 +1,16 @@
-<%= for post <- @posts do %>
-  <div class="flex gap-x-4">
-    <span>
-      <%= post.title %>
-    </span>
-    <span>by</span>
-    <span>
-      <%= post.author %>
-    </span>
-  </div>
+<%= if @loading do %>
+  Loading data...
+<% else %>
+  <%= for post <- @posts do %>
+    <div class="flex gap-x-4">
+      <span>
+        <%= post.title %>
+      </span>
+      <span>by</span>
+      <span>
+        <%= post.author %>
+      </span>
+    </div>
+  <% end %>
 <% end %>
+<.button class="mt-4" phx-click="go_to_upload">new post</.button>
