@@ -58,6 +58,15 @@ defmodule NaiaWeb do
     end
   end
 
+  def live_view_admin do
+    quote do
+      use Phoenix.LiveView,
+        layout: {NaiaWeb.Layouts, :admin}
+
+      unquote(html_helpers())
+    end
+  end
+
   def live_component do
     quote do
       use Phoenix.LiveComponent
