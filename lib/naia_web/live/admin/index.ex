@@ -15,4 +15,15 @@ defmodule NaiaWeb.Admin.Index do
   def handle_event("go_to_upload", _, socket) do
     {:noreply, push_navigate(socket, to: "/admin/upload")}
   end
+
+  def handle_event("delete_post", %{"value" => post_id}, socket) do
+    case Blog.delete_post(post_id) do
+      {1, nil} ->
+        updated_posts = Enum.reject(socket.assigns.posts, &(&1.id == String.to_integer(post_id)))
+        {:noreply, assign(socket, posts: updated_posts)}
+
+      {0, nil} ->
+        {:noreply, socket}
+    end
+  end
 end

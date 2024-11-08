@@ -1,16 +1,21 @@
 <%= if @loading do %>
   Loading data...
 <% else %>
-  <%= for post <- @posts do %>
-    <div class="flex gap-x-4">
-      <span>
-        <%= post.title %>
-      </span>
-      <span>by</span>
-      <span>
-        <%= post.author %>
-      </span>
-    </div>
-  <% end %>
+  <div class="flex flex-col gap-y-4">
+    <%= for post <- @posts do %>
+      <div class="flex items-center gap-x-4">
+        <span>
+          <%= post.title %>
+        </span>
+        <span>by</span>
+        <span>
+          <%= post.author %>
+        </span>
+        <.button variant="destructive" phx-click="delete_post" value={post.id}>
+          delete
+        </.button>
+      </div>
+    <% end %>
+  </div>
 <% end %>
 <.button class="mt-4" phx-click="go_to_upload">new post</.button>
