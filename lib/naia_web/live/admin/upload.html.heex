@@ -1,5 +1,5 @@
 <div class="mx-auto max-w-[980px] flex items-center justify-between">
-  <.form for={@form} phx-submit="upload_post" class="w-2/3 space-y-6">
+  <.form for={@form} phx-submit="upload_post" class="w-2/3 space-y-6" phx-change="validate">
     <.form_item>
       <.form_label>Title</.form_label>
       <.input field={@form[:title]} type="text" placeholder="Title" required />
@@ -24,6 +24,9 @@
           </.select_group>
         </.select_content>
       </.select>
+    </.form_item>
+    <.form_item>
+      <.live_file_input upload={@uploads.file} />
     </.form_item>
     <.button class="mt-4" type="submit">Save</.button>
   </.form>

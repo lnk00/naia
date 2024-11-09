@@ -14,8 +14,19 @@ defmodule Naia.Blog do
   @doc """
   Insert a blog post in db
   """
-  @spec insert_post(post :: Post) :: {:ok, Post} | {:error, Post.changeset()}
-  def insert_post(post) do
+  @spec insert_post(title :: String.t(), content :: String.t(), author :: String.t()) ::
+          {:ok, Post} | {:error, Post.changeset()}
+  def insert_post(title, content, author) do
+    post = %Post{
+      title: title,
+      content: content,
+      author:
+        author
+        |> String.split("_")
+        |> Enum.map(&String.capitalize/1)
+        |> Enum.join(" ")
+    }
+
     Repo.insert(post)
   end
 

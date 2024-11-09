@@ -61,7 +61,8 @@ defmodule Naia.MixProject do
       {:bandit, "~> 1.5"},
       {:dotenv, "~> 3.1"},
       {:salad_ui, "~> 0.12.0", only: [:dev]},
-      {:tails, "~> 0.1"}
+      {:tails, "~> 0.1"},
+      {:earmark, "~> 1.4"}
     ]
   end
 
