@@ -3,9 +3,27 @@
     <.form_item>
       <.form_label>Title</.form_label>
       <.input field={@form[:title]} type="text" placeholder="Title" required />
-      <.form_description>
-        This is the title of your blog post
-      </.form_description>
+    </.form_item>
+    <.form_item>
+      <.select
+        :let={select}
+        id="select-single-select"
+        name="author"
+        target="my-select"
+        placeholder="Select an author"
+        field={@form[:author]}
+      >
+        <.select_trigger builder={select} class="w-[180px]" />
+        <.select_content class="w-full" builder={select}>
+          <.select_group>
+            <.select_label>Authors</.select_label>
+            <.select_item builder={select} value="jannai_kalla" label="Jannai Kalla">
+            </.select_item>
+            <.select_item builder={select} value="damien_dumontet" label="Damien Dumontet">
+            </.select_item>
+          </.select_group>
+        </.select_content>
+      </.select>
     </.form_item>
     <.button class="mt-4" type="submit">Save</.button>
   </.form>

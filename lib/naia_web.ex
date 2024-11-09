@@ -99,6 +99,7 @@ defmodule NaiaWeb do
       import NaiaWeb.Component.Navbar
       import NaiaWeb.Component.Form
       import NaiaWeb.Component.Input
+      import NaiaWeb.Component.Select
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
