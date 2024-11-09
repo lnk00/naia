@@ -1,2 +1,12 @@
-<div>upload</div>
-<.button class="mt-4" phx-click="upload_post">back</.button>
+<div class="mx-auto max-w-[980px] flex items-center justify-between">
+  <.form for={@form} phx-submit="upload_post" class="w-2/3 space-y-6">
+    <.form_item>
+      <.form_label>Title</.form_label>
+      <.input field={@form[:title]} type="text" placeholder="Title" required />
+      <.form_description>
+        This is the title of your blog post
+      </.form_description>
+    </.form_item>
+    <.button class="mt-4" type="submit">Save</.button>
+  </.form>
+</div>
